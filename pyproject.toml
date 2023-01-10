@@ -1,0 +1,33 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ['scengen']
+
+[project]
+name = "scengen"
+version = "0.0.0"
+description = "Scenario generation of electricity consumption profiles through sampling of historical data"
+readme = "README.md"
+authors = [{ name = "Jonas Soenen" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["scenario generation", "electricity consumption", "time series", "energy score"]
+dependencies = [
+    "pandas >= 0.24",
+    "numpy >= 1.24",
+    "scikit-learn >= 1.1",
+    "kneed >= 0.8.2",
+    "kmedoids >= 0.4.1",
+    "numba"
+]
+requires-python = ">=3.9"
+
+
