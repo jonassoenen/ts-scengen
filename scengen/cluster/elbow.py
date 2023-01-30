@@ -85,9 +85,12 @@ class ElbowMethod:
         if self.n_clusters is None:
             print(self.cluster_range)
             print(inertia_scores)
-            import matplotlib.pyplot as plt
-            plt.plot(self.cluster_range, inertia_scores)
-            plt.show()
+            # import matplotlib.pyplot as plt
+            # plt.plot(self.cluster_range, inertia_scores)
+            # plt.show()
+            self.n_clusters = self.cluster_range[len(self.cluster_range)//2]
+            print(f"No clear elbow found using {self.n_clusters} clusters")
+            logging.debug(f'No clear elbow found! Using {self.n_clusters} clusters')
         best_nb_clusters_idx = self.cluster_range.index(self.n_clusters)
         self.best_clusterer = best_clusterers[best_nb_clusters_idx]
         return self

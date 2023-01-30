@@ -32,7 +32,7 @@ class RLPGenerator(Generator):
         self.rlps = None
 
     def yearly_data_df_to_low_nightday_ratio(self, yearly_data_df):
-        years = yearly_data_df.index.str.slice(-5, -1).astype("int")
+        years = yearly_data_df.index.str.slice(-4, None).astype("int")
         is_category_s21 = pd.Series(index=yearly_data_df.index, dtype="bool")
 
         for year, year_df in yearly_data_df.groupby(years):
@@ -114,7 +114,7 @@ class RLPGenerator(Generator):
 
     def generate_samples(self, yearly_info_df, daily_info_df, nb_samples=None):
         profiles_to_use = pd.Series(index=yearly_info_df.index, dtype="object")
-        years = yearly_info_df.index.str.slice(-5, -1).astype("int")
+        years = yearly_info_df.index.str.slice(-4, None).astype("int")
         for year, year_df in yearly_info_df.groupby(years):
             if year in self.slps:
                 profiles_to_use.loc[year_df.index] = self.get_slp_to_use_for_year(
@@ -144,7 +144,7 @@ class RLPGenerator(Generator):
                 type, year = slp_to_use
                 assert type == "RLP"
                 slp_to_use = self.rlps[year]["RLPestU"]
-            query_date = str(date.replace(year=int(meterID[-5:-1])).date())
+            query_date = str(date.replace(year=int(meterID[-4:])).date())
             normalized_day = slp_to_use.loc[query_date].to_numpy().reshape((1, -1))
             day = normalized_day * yearly_consumption
             sampling_probs.append((day, standard_p))

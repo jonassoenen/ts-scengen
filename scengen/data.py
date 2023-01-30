@@ -10,9 +10,9 @@ def generate_mockup_data(profiles=None, yearly_attributes=None, daily_attributes
     """
     # default attribute values
     if profiles is None:
-        profiles = [f"profile{i}" for i in range(100)]
+        profiles = [f"profile{i}_2016" for i in range(100)]
     if yearly_attributes is None:
-        yearly_attributes = ["yearly_consumption", "connection_capacity", "y_attr2"]
+        yearly_attributes = ["yearly_consumption", "connection_power", "y_attr2"]
     if daily_attributes is None:
         daily_attributes = ["feelsLikeC", "isWeekend", 'dayOfWeek', 'month']
 
